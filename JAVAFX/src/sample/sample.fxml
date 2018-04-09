@@ -1,0 +1,10 @@
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<GridPane fx:controller="sample.Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+    <HBox>
+        <Button text="New Window" GridPane.columnIndex="1" GridPane.columnSpan="1" onAction="#csinaljUjAblakot"/>
+    </HBox>
+
+</GridPane>

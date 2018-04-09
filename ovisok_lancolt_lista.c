@@ -60,6 +60,47 @@ Ovisok* elsoElemTorlese(Ovisok *fej)
         fej = fej->next;
         return fej;
 }
+Ovisok* elsoElemcsereje(Ovisok *fej)
+{
+    Ovisok *tempFej = fej;
+    tempFej = fej;
+    fej = fej->next;
+    fej->next = tempFej->next;
+    fej->next = tempFej;
+    return fej;
+}
+void buborekosanRendez(struct ovis **ujfej)
+{
+    struct ovisok *seged,*aktualis,*head=*ujfej;
+    int flag=1;
+    if(head->next!=NULL)
+    {
+        while(flag){
+            flag=0;
+            if((head->kor)>(head->next->kor)){
+                seged=head;
+                head=head->next;
+                seged->next=head->next;
+                head->next=seged;
+                flag=1;
+            }}
+            aktualis=head;
+            while(aktualis->next->next!=NULL)
+            {
+                if((aktualis->next->kor)>(aktualis->next->next->kor))
+                {
+                    seged=aktualis->next;
+                    aktualis->next=aktualis->next->next;
+                    seged->next=aktualis->next->next;
+                    aktualis->next->next=seged;
+                    flag=1
+                }
+                aktualis=aktualis->next;
+            }
+    }
+    *ujfej=head;
+
+}
 int main()
 {
     Ovisok *fej = NULL;
@@ -69,7 +110,8 @@ int main()
         printf("1 ---- Hozzaad\n");
         printf("2 ---- Kiirat\n");
         printf("3 ---- Torol\n");
-        printf("4 ---- Kilep\n");
+        printf("4 ---- BuborekRendezes\n");
+        printf("5 ---- Kilep\n");
         scanf("%d",&k);
         if(k==1)
         {
@@ -87,6 +129,10 @@ int main()
                 torol(fej,n);
             else
                 fej=elsoElemTorlese(fej);
+        }
+        else if(k == 4)
+        {
+            buborekosanRendez(fej);
         }
         else
             exit(0);
